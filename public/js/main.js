@@ -17,7 +17,8 @@ $(document).ready(function(){
     app.queries = new app.Queries();
 
     var router = new jsc.Router({
-        "/main":  function(ctx) { greetingPage.render(ctx); }
+        "/greeting":  function(ctx) { greetingPage.render(ctx); },
+        "/":          function(ctx) { console.log("whatup");    }
     });
 
     router.onChange(function(){
