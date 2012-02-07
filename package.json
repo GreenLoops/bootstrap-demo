@@ -7,7 +7,6 @@
         "connect": "1.8.x",
         "underscore": "1.2.x",
         "mongolian": "0.1.x",
-        "less": "1.1.x",
         "moment": "1.2.x",
         "request": "2.2.x",
         "cookies": "0.1.x"
