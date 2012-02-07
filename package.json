@@ -1,0 +1,19 @@
+{
+    "name": "bootstrap-demo",
+    "description": "Simple Demo for Bootstrapped apps",
+    "version": "0.1.1",
+    "author": "Rockhard Rockstar",
+    "dependencies": {
+        "connect": "1.8.x",
+        "underscore": "1.2.x",
+        "mongolian": "0.1.x",
+        "less": "1.1.x",
+        "moment": "1.2.x",
+        "request": "2.2.x",
+        "cookies": "0.1.x"
+    },
+    "devDependencies": {
+        "buster": "0.3.x",
+        "sinon": "1.3.x"
+    }
+}
