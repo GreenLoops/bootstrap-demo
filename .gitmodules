@@ -1,0 +1,3 @@
+[submodule "public/lib"]
+	path = public/lib
+	url = git@github.com:GreenLoops/bootstrap.git
