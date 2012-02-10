@@ -2,8 +2,8 @@ $(document).ready(function(){
 
     var mainEl = document.getElementById("main-content");
 
-    app.queries = new app.Queries();
-    app.commands = new app.Commands(app.queries);
+    app.dataStore = new app.DataStore();
+    app.posts = new app.Posts(app.dataStore);
 
     var greetingPage = new app.GreetingPage(mainEl);
     var greetingNewPage = new app.GreetingNewPage(mainEl);
@@ -27,7 +27,7 @@ $(document).ready(function(){
 
     });
 
-    app.queries.init(function(){
+    app.dataStore.init(function(){
         router.start();
     });
 });

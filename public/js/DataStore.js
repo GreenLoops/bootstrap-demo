@@ -1,4 +1,4 @@
-app.Queries = function(options){
+app.DataStore = function(options){
     var self = this;
 
     self.data = {
@@ -6,14 +6,14 @@ app.Queries = function(options){
     };
 };
 
-app.Queries.prototype.clear = function(){
+app.DataStore.prototype.clear = function(){
     var self = this;
     self.data = {
         greetings:[] 
     };
 };
 
-app.Queries.prototype.byName = function(queryName, fn){
+app.DataStore.prototype.byName = function(queryName, fn){
     var self = this;
     $.getJSON("/q/"+app.contextId+"/main/"+queryName+"/all", function(r) {
         fn(r);
@@ -22,7 +22,7 @@ app.Queries.prototype.byName = function(queryName, fn){
     });
 };
 
-app.Queries.prototype.byNameAndId = function(queryName, queryId, fn){
+app.DataStore.prototype.byNameAndId = function(queryName, queryId, fn){
     var self = this;
     $.getJSON("/q/"+app.contextId+"/"+queryName+"/"+queryId, function(r) {
         fn(r);
@@ -31,7 +31,7 @@ app.Queries.prototype.byNameAndId = function(queryName, queryId, fn){
     });
 };
 
-app.Queries.prototype.init = function(fn){
+app.DataStore.prototype.init = function(fn){
     var self = this;
 
     self.byName("greetings", function(greetings){
@@ -40,13 +40,13 @@ app.Queries.prototype.init = function(fn){
     });
 };
 
-app.Queries.prototype.allGreetings = function(fn){
+app.DataStore.prototype.allGreetings = function(fn){
     var self = this;
 
     fn(self.data.greetings);
 };
 
-app.Queries.prototype.greetingById = function(greetingId, fn){
+app.DataStore.prototype.greetingById = function(greetingId, fn){
     var self = this;
 
     var greeting = _.find(self.data.greetings, function(g){

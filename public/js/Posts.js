@@ -1,9 +1,9 @@
-app.Commands = function(dataStore, options){
+app.Posts = function(dataStore, options){
     var self = this;
     self.dataStore = dataStore;
 };
 
-app.Commands.prototype.postit = function(domainName, commandName, data, fn, donotRefresh){
+app.Posts.prototype.postit = function(domainName, commandName, data, fn, donotRefresh){
     var self = this;
     $.ajax({
         url: "/c/1/"+domainName+"/"+commandName,
@@ -19,7 +19,7 @@ app.Commands.prototype.postit = function(domainName, commandName, data, fn, dono
     });
 };
 
-app.Commands.prototype.createGreeting = function(greeting, fn){
+app.Posts.prototype.createGreeting = function(greeting, fn){
     var self = this;
     greeting.greetingId = Math.uuid(32);
     self.postit("greeting", "createGreeting", greeting, fn);

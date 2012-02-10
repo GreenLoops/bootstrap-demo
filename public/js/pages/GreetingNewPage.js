@@ -28,7 +28,7 @@ app.GreetingNewPage = function(target){
         </form>\
         <div class=well>\
             <button id=action-save class="btn btn-primary">Save</button>\
-            <a href="#/greeting" class="btn">Cancel</a>\
+            <button id=action-cancel class=btn>Cancel</button>\
         </div>\
     ');
 };
@@ -44,7 +44,11 @@ app.GreetingNewPage.prototype.init = function(ctx, complete){
         self.done();
     });
 
-    app.queries.greetingById(ctx.params.greetingId, function(greeting){
+    $("#action-cancel").on("click", function(event){
+        self.redirect("/greeting");
+    });
+
+    app.dataStore.greetingById(ctx.params.greetingId, function(greeting){
         app.binding.populate(self.form, greeting);
         complete();
     });
@@ -54,7 +58,7 @@ app.GreetingNewPage.prototype.done = function(){
     var self = this;
     self.attempt(function(done){
         var greetingData = app.binding.parse(self.form);
-        app.commands.createGreeting(greetingData, function(){
+        app.posts.createGreeting(greetingData, function(){
             done(true);
         });
     }, "/greeting");

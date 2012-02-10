@@ -24,7 +24,7 @@ app.GreetingPage.prototype.init = function(ctx, complete){
 
     self.$el.html(self.mainTemplate({}));
 
-    app.queries.allGreetings(function(greetings){
+    app.dataStore.allGreetings(function(greetings){
 
         self.eid("table-here").appendChild(self.tableBuilder.generate(greetings));
 
