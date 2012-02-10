@@ -2,7 +2,11 @@ $(document).ready(function(){
 
     var mainEl = document.getElementById("main-content");
 
+    app.queries = new app.Queries();
+    app.commands = new app.Commands(app.queries);
+
     var greetingPage = new app.GreetingPage(mainEl);
+    var greetingNewPage = new app.GreetingNewPage(mainEl);
 
     app.binding = new jsc.FormBinding({
         dateFormatter: function(value, format){
@@ -14,15 +18,13 @@ $(document).ready(function(){
     app.logging.addConsoleAppender();
     app.logger = app.logging.getLogger("default");
 
-    app.queries = new app.Queries();
-
     var router = new jsc.Router({
-        "/greeting":  function(ctx) { greetingPage.render(ctx); },
-        "/":          function(ctx) { console.log("whatup");    }
+        "/greeting":      function(ctx) { greetingPage.render(ctx);    },
+        "/greeting/new":  function(ctx) { greetingNewPage.render(ctx); }
     });
 
     router.onChange(function(){
-        console.log("changed");
+
     });
 
     app.queries.init(function(){

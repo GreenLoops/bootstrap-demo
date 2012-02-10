@@ -1,33 +1,27 @@
-app.Commands = function(options){
+app.Commands = function(dataStore, options){
     var self = this;
-
-    self.data = {
-        greetings:[] 
-    };
+    self.dataStore = dataStore;
 };
 
-app.Commands.prototype.postit = function(commandName, data, fn, donotRefresh){
+app.Commands.prototype.postit = function(domainName, commandName, data, fn, donotRefresh){
+    var self = this;
     $.ajax({
-        url: "/api/c/"+sll.currentPortfolioId+commandName,
+        url: "/c/1/"+domainName+"/"+commandName,
         type: "POST",
         data: JSON.stringify(data),
         contentType: "application/json",
         success: function(){
-            if(!donotRefresh){
-
-            }else{
-                fn();
-            }
+            self.dataStore.init(fn);
         },
         error: function (res) {
-            sll.logger.log(res);
+            app.logger.log(res);
         }
     });
 };
 
 app.Commands.prototype.createGreeting = function(greeting, fn){
     var self = this;
-
-    fn(self.data.greetings);
+    greeting.greetingId = Math.uuid(32);
+    self.postit("greeting", "createGreeting", greeting, fn);
 };
 

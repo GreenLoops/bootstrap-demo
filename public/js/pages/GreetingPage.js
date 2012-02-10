@@ -1,18 +1,19 @@
 app.GreetingPage = function(target){
     var self = this;
 
-    jsc.BasePage.call(self, target, "greetings");
+    jsc.BasePage.call(self, target, "greeting");
 
     self.mainTemplate = _.template('\
-        <div class=page-bar></div>\
+        <a href="#/greeting/new" class=btn>New Greeting</a>\
         <div id=table-here class=full-table-data></div>\
     ');
 
     self.tableBuilder = new jsc.TableBuilder({
-        className: "table-data",
+        className: "table",
         idTemplate : "<%= greetingId %>",
         cols : [
-            { header: "Message", dataTemplate: "<%= message %>" }
+            { header: "Message", dataTemplate: "<%= message %>" },
+            { header: "Kind",    dataTemplate: "<%= kind %>"    }
         ]
     });
 };

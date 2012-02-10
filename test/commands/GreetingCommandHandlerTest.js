@@ -17,13 +17,13 @@ buster.testCase("The Greeting Command", {
 
         var fromClient = {
             greetingId: "abc",
-            sender: "joe",
+            kind: "0",
             message: "hello, world"
         };
 
         var sentToDB = {
             greetingId: "abc",
-            sender: "joe",
+            kind: "0",
             message: "HELLO, WORLD"
         };
 

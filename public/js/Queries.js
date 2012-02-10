@@ -6,6 +6,13 @@ app.Queries = function(options){
     };
 };
 
+app.Queries.prototype.clear = function(){
+    var self = this;
+    self.data = {
+        greetings:[] 
+    };
+};
+
 app.Queries.prototype.byName = function(queryName, fn){
     var self = this;
     $.getJSON("/q/"+app.contextId+"/main/"+queryName+"/all", function(r) {
@@ -39,7 +46,7 @@ app.Queries.prototype.allGreetings = function(fn){
     fn(self.data.greetings);
 };
 
-app.Queries.prototype.greetingsById = function(propertyId, fn){
+app.Queries.prototype.greetingById = function(greetingId, fn){
     var self = this;
 
     var greeting = _.find(self.data.greetings, function(g){
