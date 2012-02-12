@@ -2,14 +2,14 @@ app.DataStore = function(options){
     var self = this;
 
     self.data = {
-        greetings:[] 
+        greetings:[]
     };
 };
 
 app.DataStore.prototype.clear = function(){
     var self = this;
     self.data = {
-        greetings:[] 
+        greetings:[]
     };
 };
 
